@@ -4,12 +4,23 @@
     <title>Login</title>
 </head>
 <body>
-    <h2>Login Page</h2>
+
+    <h1>Login</h1>
 
     <form>
-        <input type="email" placeholder="Email"><br><br>
-        <input type="password" placeholder="Password"><br><br>
+
+        <label>Email</label><br>
+        <input type="email" name="email"><br><br>
+
+        <label>Password</label><br>
+        <input type="password" name="password"><br><br>
+
         <button type="submit">Login</button>
+
     </form>
+
+    <br>
+    <a href="index.php">Back to Home</a>
+
 </body>
 </html>
