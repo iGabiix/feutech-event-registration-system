@@ -4,13 +4,29 @@
     <title>Register</title>
 </head>
 <body>
-    <h2>Register Page</h2>
+
+    <h1>Create Account</h1>
 
     <form>
-        <input type="text" placeholder="Full Name"><br><br>
-        <input type="email" placeholder="Email"><br><br>
-        <input type="password" placeholder="Password"><br><br>
+
+        <label>Full Name</label><br>
+        <input type="text" name="fullname"><br><br>
+
+        <label>Email</label><br>
+        <input type="email" name="email"><br><br>
+
+        <label>Password</label><br>
+        <input type="password" name="password"><br><br>
+
+        <label>Confirm Password</label><br>
+        <input type="password" name="confirm_password"><br><br>
+
         <button type="submit">Register</button>
+
     </form>
+
+    <br>
+    <a href="index.php">Back to Home</a>
+
 </body>
 </html>
