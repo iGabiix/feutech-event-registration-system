@@ -1,26 +1,36 @@
 <?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 include("config/database.php");
 
 $message = "";
 
 if(isset($_POST['register'])){
 
-    $fullname = $_POST['fullname'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
+    $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
 
     if($password != $confirm_password){
+
         $message = "Passwords do not match!";
+
     } else {
 
         $sql = "INSERT INTO users(fullname,email,password)
                 VALUES('$fullname','$email','$password')";
 
-        if(mysqli_query($conn,$sql)){
+        if(mysqli_query($conn, $sql)){
+
             $message = "Registration Successful!";
+
         } else {
-            $message = "Error: " . mysqli_error($conn);
+
+            $message = "Database Error: " . mysqli_error($conn);
+
         }
     }
 }
@@ -38,7 +48,9 @@ if(isset($_POST['register'])){
 
     <h2>Create Account</h2>
 
-    <p><?php echo $message; ?></p>
+    <?php if($message != ""){ ?>
+        <p><?php echo $message; ?></p>
+    <?php } ?>
 
     <form method="POST">
 
