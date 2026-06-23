@@ -1,14 +1,19 @@
 <?php
 
 $host = "localhost";
-$username = "root";
+$user = "root";
 $password = "";
 $database = "event_registration_system";
 
-$conn = mysqli_connect($host, $username, $password, $database);
+$conn = mysqli_connect(
+    $host,
+    $user,
+    $password,
+    $database
+);
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+if(!$conn){
+    die("Connection Failed: " . mysqli_connect_error());
 }
 
 ?>

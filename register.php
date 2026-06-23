@@ -1,32 +1,70 @@
+<?php
+include("config/database.php");
+
+$message = "";
+
+if(isset($_POST['register'])){
+
+    $fullname = $_POST['fullname'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    if($password != $confirm_password){
+        $message = "Passwords do not match!";
+    } else {
+
+        $sql = "INSERT INTO users(fullname,email,password)
+                VALUES('$fullname','$email','$password')";
+
+        if(mysqli_query($conn,$sql)){
+            $message = "Registration Successful!";
+        } else {
+            $message = "Error: " . mysqli_error($conn);
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Register</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-    <h1>Create Account</h1>
+<div class="container">
 
-    <form>
+    <h2>Create Account</h2>
 
-        <label>Full Name</label><br>
-        <input type="text" name="fullname"><br><br>
+    <p><?php echo $message; ?></p>
 
-        <label>Email</label><br>
-        <input type="email" name="email"><br><br>
+    <form method="POST">
 
-        <label>Password</label><br>
-        <input type="password" name="password"><br><br>
+        <label>Full Name</label>
+        <input type="text" name="fullname" required>
 
-        <label>Confirm Password</label><br>
-        <input type="password" name="confirm_password"><br><br>
+        <label>Email</label>
+        <input type="email" name="email" required>
 
-        <button type="submit">Register</button>
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <label>Confirm Password</label>
+        <input type="password" name="confirm_password" required>
+
+        <button type="submit" name="register">
+            Register
+        </button>
 
     </form>
 
     <br>
-    <a href="index.php">Back to Home</a>
+
+    <a href="login.php">Already have an account?</a>
+
+</div>
 
 </body>
 </html>
