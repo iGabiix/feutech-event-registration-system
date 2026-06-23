@@ -3,7 +3,7 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$database = "event_registration";
+$database = "event_registration_system";
 
 $conn = mysqli_connect($host, $username, $password, $database);
 
