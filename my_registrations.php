@@ -33,55 +33,28 @@ $result = mysqli_query($conn,$sql);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>My Registrations</title>
 
 <link rel="stylesheet" href="assets/css/style.css">
 
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 <style>
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
-}
-
-table,th,td{
-    border:1px solid #ccc;
-}
-
-th{
-    background:green;
-    color:white;
-}
-
-th,td{
-    padding:12px;
-    text-align:center;
-}
-
-.btn{
-    padding:8px 15px;
-    border-radius:5px;
-    text-decoration:none;
-    color:white;
-}
 
 .cancel{
     background:#dc3545;
 }
 
-.back{
-    display:inline-block;
-    margin-top:20px;
-    background:green;
-    color:white;
-    padding:10px 20px;
-    border-radius:5px;
-    text-decoration:none;
+.cancel:hover{
+    background:#b02a37;
 }
 
 </style>
@@ -90,60 +63,133 @@ th,td{
 
 <body>
 
-<div class="container" style="width:1100px;">
+<div class="container">
 
-<h2>My Registered Events</h2>
+    <h1 class="auth-title">
+        FEU Event Registration System
+    </h1>
 
-<table>
+    <h2 class="auth-subtitle">
+        My Registrations
+    </h2>
 
-<tr>
+    <div class="welcome-card">
 
-<th>Event</th>
-<th>Description</th>
-<th>Date</th>
-<th>Location</th>
-<th>Registered At</th>
-<th>Action</th>
+        <div class="welcome-icon">
 
-</tr>
+            <i class="fa-solid fa-file-signature"></i>
 
-<?php while($row=mysqli_fetch_assoc($result)){ ?>
+        </div>
 
-<tr>
+        <div>
 
-<td><?php echo $row['event_name']; ?></td>
+            <h2>Registered Events</h2>
 
-<td><?php echo $row['description']; ?></td>
+            <p>
+                View and manage your registered FEU events.
+            </p>
 
-<td><?php echo $row['event_date']; ?></td>
+        </div>
 
-<td><?php echo $row['location']; ?></td>
+    </div>
 
-<td><?php echo $row['registration_date']; ?></td>
+<?php if(mysqli_num_rows($result) > 0){ ?>
 
-<td>
+    <div class="table-container">
 
-<a
-class="btn cancel"
-href="cancel_registration.php?id=<?php echo $row['registration_id']; ?>"
-onclick="return confirm('Cancel this registration?');">
+    <table>
 
-Cancel
+        <thead>
 
-</a>
+            <tr>
 
-</td>
+                <th>Event</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Registered At</th>
+                <th>Action</th>
 
-</tr>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        <?php while($row=mysqli_fetch_assoc($result)){ ?>
+
+            <tr>
+
+                <td><?php echo $row['event_name']; ?></td>
+
+                <td><?php echo $row['description']; ?></td>
+
+                <td><?php echo $row['event_date']; ?></td>
+
+                <td><?php echo $row['location']; ?></td>
+
+                <td><?php echo $row['registration_date']; ?></td>
+
+                <td>
+
+                    <a
+                    href="cancel_registration.php?id=<?php echo $row['registration_id']; ?>"
+                    class="btn btn-danger btn-sm cancel"
+                    onclick="return confirm('Cancel this registration?');">
+
+                        Cancel
+
+                    </a>
+
+                </td>
+
+            </tr>
+
+        <?php } ?>
+
+        </tbody>
+
+    </table>
+
+    </div>
+
+<?php } else { ?>
+
+    <div class="welcome-card">
+
+        <div class="welcome-icon">
+
+            <i class="fa-solid fa-calendar-xmark"></i>
+
+        </div>
+
+        <div>
+
+            <h2>No Registrations Yet</h2>
+
+            <p>
+                You haven't registered for any events yet.
+            </p>
+
+        </div>
+
+    </div>
+
+    <a href="student_events.php" class="btn">
+
+        Browse Events
+
+    </a>
 
 <?php } ?>
 
-</table>
+<br><br>
 
-<br>
+<a href="student_dashboard.php" class="btn">
 
-<a class="back" href="student_dashboard.php">
-← Back to Dashboard
+    <i class="fa-solid fa-arrow-left"></i>
+
+    Back to Dashboard
 
 </a>
 
