@@ -144,6 +144,7 @@ Cancel
 
 <a class="back" href="student_dashboard.php">
 ← Back to Dashboard
+
 </a>
 
 </div>
