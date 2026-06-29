@@ -512,3 +512,31 @@ table tbody tr:hover{
 .btn-danger:hover{
     background:#b02a37;
 }
+
+/* =============================
+   ADMIN DASHBOARD
+============================= */
+
+.create-icon{
+    color:#198754;
+}
+
+.manage-icon{
+    color:#0d6efd;
+}
+
+.registration-icon{
+    color:#fd7e14;
+}
+
+.student-icon{
+    color:#6f42c1;
+}
+
+.file-icon{
+    color:#20c997;
+}
+
+.logout-icon{
+    color:#dc3545;
+}
