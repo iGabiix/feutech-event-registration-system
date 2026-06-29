@@ -10,22 +10,19 @@ if(isset($_POST['login'])){
     $password = trim($_POST['password']);
 
     $sql = "SELECT * FROM users WHERE email='$email'";
-    $result = mysqli_query($conn, $sql);
+    $result = mysqli_query($conn,$sql);
 
-    if(mysqli_num_rows($result) == 1){
+    if(mysqli_num_rows($result)==1){
 
         $user = mysqli_fetch_assoc($result);
 
-        // Current project uses plain text passwords.
-        // Later we'll replace this with password_verify().
+        if($password==$user['password']){
 
-        if($password == $user['password']){
+            $_SESSION['user_id']=$user['id'];
+            $_SESSION['fullname']=$user['fullname'];
+            $_SESSION['role']=$user['role'];
 
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['fullname'] = $user['fullname'];
-            $_SESSION['role'] = $user['role'];
-
-            if($user['role'] == "admin"){
+            if($user['role']=="admin"){
                 header("Location: admin/dashboard.php");
             }else{
                 header("Location: student_dashboard.php");
@@ -35,13 +32,13 @@ if(isset($_POST['login'])){
 
         }else{
 
-            $message = "Incorrect password.";
+            $message="Incorrect password.";
 
         }
 
     }else{
 
-        $message = "Email not found.";
+        $message="Email not found.";
 
     }
 
@@ -49,6 +46,7 @@ if(isset($_POST['login'])){
 ?>
 
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -65,28 +63,25 @@ if(isset($_POST['login'])){
 
 <body>
 
-<div class="container auth-box">
+<div class="container">
+
+<div class="auth-box">
 
 <h1 class="auth-title">
+
 FEU Event Registration System
+
 </h1>
 
 <h2 class="auth-subtitle">
+
 Welcome Back
+
 </h2>
 
-<?php if($message != ""){ ?>
+<?php if($message!=""){ ?>
 
-<div
-style="
-background:#ffe5e5;
-color:#b00020;
-padding:12px;
-border-radius:8px;
-margin-bottom:20px;
-text-align:center;
-font-weight:bold;
-">
+<div class="error">
 
 <?php echo $message; ?>
 
@@ -102,9 +97,8 @@ font-weight:bold;
 type="email"
 name="email"
 placeholder="Enter your email address"
-required
 autocomplete="email"
->
+required>
 
 <label>Password</label>
 
@@ -112,9 +106,8 @@ autocomplete="email"
 type="password"
 name="password"
 placeholder="Enter your password"
-required
 autocomplete="current-password"
->
+required>
 
 <button
 type="submit"
@@ -134,13 +127,13 @@ Don't have an account?
 
 </p>
 
-<br>
-
 <a class="btn" href="register.php">
 
 Create Account
 
 </a>
+
+</div>
 
 </div>
 
