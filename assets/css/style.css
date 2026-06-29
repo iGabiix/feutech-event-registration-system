@@ -1,3 +1,7 @@
+/* =====================================
+   FEU EVENT REGISTRATION SYSTEM
+===================================== */
+
 *{
     margin:0;
     padding:0;
@@ -6,65 +10,101 @@
 
 body{
     font-family:Arial, Helvetica, sans-serif;
-    background:#F8FAFC;
-    color:#222;
+    background:#F3F6F9;
+    color:#333;
 }
+
+/* ---------- MAIN CONTAINER ---------- */
 
 .container{
+
     width:90%;
-    max-width:900px;
+    max-width:1100px;
+
     margin:50px auto;
+
     background:#fff;
+
     padding:40px;
+
     border-radius:18px;
-    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
 }
 
+/* ---------- LOGIN / REGISTER ---------- */
+
 .auth-box{
-    max-width:850px;
+
+    width:100%;
+    max-width:500px;
+
+    margin:auto;
+
 }
 
 .auth-title{
-    font-size:58px;
-    color:#014421;
-    margin-bottom:40px;
-    font-weight:bold;
+
+    text-align:center;
+
+    color:#006B3F;
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
 }
 
 .auth-subtitle{
+
     text-align:center;
-    font-size:30px;
-    margin-bottom:35px;
-    color:#006B3F;
+
+    color:#555;
+
+    font-size:22px;
+
+    margin-bottom:30px;
+
 }
 
+/* ---------- LABELS ---------- */
+
 label{
+
     display:block;
+
     margin-top:18px;
+
     margin-bottom:8px;
-    font-size:22px;
+
     font-weight:bold;
+
+    color:#014421;
+
 }
+
+/* ---------- INPUTS ---------- */
 
 input,
 textarea,
 select{
 
+    display:block;
+
     width:100%;
 
-    padding:15px;
+    padding:12px 15px;
 
-    border:1px solid #bbb;
+    border:1px solid #ccc;
 
     border-radius:8px;
 
-    font-size:18px;
+    font-size:16px;
 
-    outline:none;
+    background:white;
 
     transition:.25s;
-
-    box-sizing:border-box;
 
 }
 
@@ -72,45 +112,93 @@ input:focus,
 textarea:focus,
 select:focus{
 
-    border:2px solid #006B3F;
+    outline:none;
+
+    border-color:#006B3F;
+
+    box-shadow:0 0 6px rgba(0,107,63,.25);
 
 }
 
-button,
-.btn{
+/* ---------- BUTTON ---------- */
 
-    display:inline-block;
+button{
 
     width:100%;
 
+    padding:14px;
+
     margin-top:25px;
-
-    padding:15px;
-
-    background:#006B3F;
-
-    color:white;
 
     border:none;
 
     border-radius:8px;
 
-    font-size:20px;
+    background:#006B3F;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:bold;
 
     cursor:pointer;
-
-    text-decoration:none;
 
     transition:.25s;
 
 }
 
-button:hover,
-.btn:hover{
+button:hover{
 
     background:#014421;
 
 }
+
+/* ---------- LINKS ---------- */
+
+a{
+
+    text-decoration:none;
+
+    color:#006B3F;
+
+    font-weight:bold;
+
+}
+
+a:hover{
+
+    color:#014421;
+
+}
+
+/* ---------- BUTTON LINKS ---------- */
+
+.btn{
+
+    display:inline-block;
+
+    background:#006B3F;
+
+    color:white;
+
+    padding:12px 24px;
+
+    border-radius:8px;
+
+    margin-top:10px;
+
+}
+
+.btn:hover{
+
+    background:#014421;
+
+    color:white;
+
+}
+
+/* ---------- TABLE ---------- */
 
 table{
 
@@ -147,31 +235,69 @@ td{
 
 }
 
-.auth-footer{
+/* ---------- DASHBOARD CARDS ---------- */
 
-    margin-top:30px;
+.cards{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin:30px 0;
+
+}
+
+.card{
+
+    flex:1;
+
+    min-width:220px;
+
+    background:#006B3F;
+
+    color:white;
+
+    padding:30px;
+
+    border-radius:12px;
 
     text-align:center;
 
 }
 
-.auth-footer p{
+.card h1{
 
-    margin-bottom:15px;
+    font-size:42px;
+
+    margin-bottom:10px;
+
+}
+
+.card p{
 
     font-size:18px;
 
 }
 
-.auth-footer a{
+/* ---------- LOGIN FOOTER ---------- */
 
-    width:auto;
+.auth-footer{
 
-    display:inline-block;
+    text-align:center;
 
-    padding:12px 30px;
+    margin-top:25px;
 
 }
+
+.auth-footer p{
+
+    margin-bottom:12px;
+
+}
+
+/* ---------- ALERTS ---------- */
 
 .success{
 
@@ -201,25 +327,33 @@ td{
 
 }
 
+/* ---------- MOBILE ---------- */
+
 @media(max-width:768px){
 
 .container{
 
-width:95%;
+    width:95%;
 
-padding:25px;
+    padding:25px;
 
 }
 
 .auth-title{
 
-font-size:38px;
+    font-size:28px;
 
 }
 
 .auth-subtitle{
 
-font-size:26px;
+    font-size:18px;
+
+}
+
+.cards{
+
+    flex-direction:column;
 
 }
 
