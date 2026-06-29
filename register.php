@@ -6,77 +6,178 @@ ini_set('display_errors', 1);
 include("config/database.php");
 
 $message = "";
+$messageType = "";
 
 if(isset($_POST['register'])){
 
-    $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
-    $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
+    $fullname = trim(mysqli_real_escape_string($conn, $_POST['fullname']));
+    $email = trim(mysqli_real_escape_string($conn, $_POST['email']));
+    $password = trim($_POST['password']);
+    $confirm_password = trim($_POST['confirm_password']);
 
-    if($password != $confirm_password){
+    // Check if email already exists
+    $check = mysqli_query($conn,"SELECT * FROM users WHERE email='$email'");
 
-        $message = "Passwords do not match!";
+    if(mysqli_num_rows($check) > 0){
 
-    } else {
+        $message = "Email already exists.";
+        $messageType = "error";
+
+    }
+    elseif($password != $confirm_password){
+
+        $message = "Passwords do not match.";
+        $messageType = "error";
+
+    }else{
+
+        // Plain text password for now
+        // Later we will change this to password_hash()
 
         $sql = "INSERT INTO users(fullname,email,password)
                 VALUES('$fullname','$email','$password')";
 
-        if(mysqli_query($conn, $sql)){
+        if(mysqli_query($conn,$sql)){
 
-            $message = "Registration Successful!";
+            $message = "Registration successful! You may now login.";
+            $messageType = "success";
 
-        } else {
+        }else{
 
-            $message = "Database Error: " . mysqli_error($conn);
+            $message = "Database Error: ".mysqli_error($conn);
+            $messageType = "error";
 
         }
+
     }
+
 }
+
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Register</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Create Account | FEU Event Registration System</title>
+
+<link rel="stylesheet"
+href="assets/css/style.css">
+
 </head>
+
 <body>
 
-<div class="container">
+<div class="container auth-box">
 
-    <h2>Create Account</h2>
+<h1 class="auth-title">
 
-    <?php if($message != ""){ ?>
-        <p><?php echo $message; ?></p>
-    <?php } ?>
+FEU Event Registration System
 
-    <form method="POST">
+</h1>
 
-        <label>Full Name</label>
-        <input type="text" name="fullname" required>
+<h2 class="auth-subtitle">
 
-        <label>Email</label>
-        <input type="email" name="email" required>
+Create Account
 
-        <label>Password</label>
-        <input type="password" name="password" required>
+</h2>
 
-        <label>Confirm Password</label>
-        <input type="password" name="confirm_password" required>
+<?php if($message!=""){ ?>
 
-        <button type="submit" name="register">
-            Register
-        </button>
+<div
+style="
+padding:12px;
+margin-bottom:20px;
+border-radius:8px;
+text-align:center;
+font-weight:bold;
 
-    </form>
+<?php
+if($messageType=="success"){
+echo "background:#d4edda;color:#155724;";
+}else{
+echo "background:#ffe5e5;color:#b00020;";
+}
+?>
+">
 
-    <br>
+<?php echo $message; ?>
 
-    <a href="login.php">Already have an account?</a>
+</div>
+
+<?php } ?>
+
+<form method="POST">
+
+<label>Full Name</label>
+
+<input
+type="text"
+name="fullname"
+placeholder="Enter your full name"
+required>
+
+<label>Email Address</label>
+
+<input
+type="email"
+name="email"
+placeholder="Enter your email address"
+required>
+
+<label>Password</label>
+
+<input
+type="password"
+name="password"
+placeholder="Enter your password"
+required>
+
+<label>Confirm Password</label>
+
+<input
+type="password"
+name="confirm_password"
+placeholder="Confirm your password"
+required>
+
+<button
+type="submit"
+name="register">
+
+Create Account
+
+</button>
+
+</form>
+
+<div class="auth-footer">
+
+<p>
+
+Already have an account?
+
+</p>
+
+<br>
+
+<a class="btn"
+href="login.php">
+
+Login Here
+
+</a>
+
+</div>
 
 </div>
 
 </body>
+
 </html>
