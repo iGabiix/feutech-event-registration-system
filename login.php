@@ -6,16 +6,17 @@ $message = "";
 
 if(isset($_POST['login'])){
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
 
     $sql = "SELECT * FROM users WHERE email='$email'";
     $result = mysqli_query($conn, $sql);
 
-    if(mysqli_num_rows($result) > 0){
+    if(mysqli_num_rows($result) == 1){
 
         $user = mysqli_fetch_assoc($result);
 
+        // Plain text password (current setup)
         if($password == $user['password']){
 
             $_SESSION['user_id'] = $user['id'];
@@ -46,9 +47,9 @@ if(isset($_POST['login'])){
 
 <head>
 
-<title>Login</title>
+    <title>FEU Event Registration System</title>
 
-<link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 
@@ -56,41 +57,50 @@ if(isset($_POST['login'])){
 
 <div class="container">
 
-<h2>Login</h2>
+    <h1>FEU Event Registration System</h1>
 
-<p style="color:red;"><?php echo $message; ?></p>
+    <h2>Login</h2>
 
-<form method="POST">
+    <?php if($message != ""){ ?>
+        <p style="color:red; font-weight:bold;">
+            <?php echo $message; ?>
+        </p>
+    <?php } ?>
 
-<label>Email</label>
+    <form method="POST">
 
-<input
-type="email"
-name="email"
-required
->
+        <label>Email</label>
 
-<label>Password</label>
+        <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+        >
 
-<input
-type="password"
-name="password"
-required
->
+        <label>Password</label>
 
-<button
-type="submit"
-name="login">
-Login
-</button>
+        <input
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+        >
 
-</form>
+        <button
+            type="submit"
+            name="login">
+            Login
+        </button>
 
-<br>
+    </form>
 
-<a href="register.php">
-Create an account
-</a>
+    <br>
+
+    <p>
+        Don't have an account?
+        <a href="register.php">Register Here</a>
+    </p>
 
 </div>
 
