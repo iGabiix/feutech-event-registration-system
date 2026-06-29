@@ -14,12 +14,17 @@ registrations.registration_id,
 users.fullname,
 users.email,
 events.event_name,
+events.event_date,
 registrations.registration_date
+
 FROM registrations
+
 INNER JOIN users
 ON registrations.user_id = users.id
+
 INNER JOIN events
 ON registrations.event_id = events.event_id
+
 ORDER BY registrations.registration_date DESC
 ";
 
@@ -47,14 +52,14 @@ table,th,td{
 border:1px solid #ccc;
 }
 
-th,td{
-padding:10px;
-text-align:center;
-}
-
 th{
 background:green;
 color:white;
+}
+
+th,td{
+padding:12px;
+text-align:center;
 }
 
 </style>
@@ -63,19 +68,25 @@ color:white;
 
 <body>
 
-<div class="container" style="width:1000px;">
+<div class="container" style="width:1100px;">
 
-<h2>Event Registrations</h2>
+<h2>Student Registrations</h2>
 
 <table>
 
 <tr>
 
 <th>ID</th>
+
 <th>Student</th>
+
 <th>Email</th>
+
 <th>Event</th>
-<th>Date Registered</th>
+
+<th>Date</th>
+
+<th>Registered At</th>
 
 </tr>
 
@@ -90,6 +101,8 @@ color:white;
 <td><?php echo $row['email']; ?></td>
 
 <td><?php echo $row['event_name']; ?></td>
+
+<td><?php echo $row['event_date']; ?></td>
 
 <td><?php echo $row['registration_date']; ?></td>
 
