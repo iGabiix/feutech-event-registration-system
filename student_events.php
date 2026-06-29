@@ -111,6 +111,7 @@ My Registrations
 
 <a href="admin/dashboard.php">
 ← Back to Dashboard
+
 </a>
 
 </div>
