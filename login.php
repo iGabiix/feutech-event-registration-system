@@ -63,9 +63,7 @@ if(isset($_POST['login'])){
 
 <body>
 
-<div class="container">
-
-<div class="auth-box">
+<div class="container auth-box">
 
 <h1 class="auth-title">
 
@@ -132,8 +130,6 @@ Don't have an account?
 Create Account
 
 </a>
-
-</div>
 
 </div>
 
