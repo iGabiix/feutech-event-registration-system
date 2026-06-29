@@ -44,6 +44,12 @@ Create Event
 </li>
 
 <li>
+<a href="../student_events.php">
+Student Event Registration
+</a>
+</li>
+
+<li>
 <a href="events.php">
 Manage Events
 </a>
