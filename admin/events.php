@@ -45,7 +45,7 @@ th{
 
 .action-btn{
     text-decoration:none;
-    padding:5px 10px;
+    padding:8px 15px;
     border-radius:5px;
     color:white;
 }
@@ -73,13 +73,9 @@ th{
 <tr>
 
 <th>ID</th>
-
 <th>Event Name</th>
-
 <th>Date</th>
-
 <th>Location</th>
-
 <th>Actions</th>
 
 </tr>
@@ -98,13 +94,16 @@ th{
 
 <td>
 
-<a class="action-btn edit"
+<a
+class="action-btn edit"
 href="edit_event.php?id=<?php echo $row['event_id']; ?>">
 Edit
 </a>
 
-<a class="action-btn delete"
-href="delete_event.php?id=<?php echo $row['event_id']; ?>">
+<a
+class="action-btn delete"
+href="delete_event.php?id=<?php echo $row['event_id']; ?>"
+onclick="return confirm('Are you sure you want to delete this event?');">
 Delete
 </a>
 
