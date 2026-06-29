@@ -1,3 +1,54 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user_id'])){
+    header("Location: ../login.php");
+    exit();
+}
+
+if($_SESSION['role'] != "admin"){
+    header("Location: ../student_dashboard.php");
+    exit();
+}
+
+include("../config/database.php");
+
+/* ==========================
+   DASHBOARD COUNTS
+========================== */
+
+// Total Users
+$userQuery = mysqli_query($conn, "SELECT COUNT(*) AS total FROM users");
+$totalUsers = mysqli_fetch_assoc($userQuery)['total'];
+
+// Total Events
+$eventQuery = mysqli_query($conn, "SELECT COUNT(*) AS total FROM events");
+$totalEvents = mysqli_fetch_assoc($eventQuery)['total'];
+
+// Total Registrations
+$registrationQuery = mysqli_query($conn, "SELECT COUNT(*) AS total FROM registrations");
+$totalRegistrations = mysqli_fetch_assoc($registrationQuery)['total'];
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard</title>
+
+<link rel="stylesheet" href="../assets/css/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
 <body>
 
 <div class="container">
@@ -88,9 +139,7 @@
 
             <h3>Create Event</h3>
 
-            <p>
-                Create new events for students to register.
-            </p>
+            <p>Create new events for students to register.</p>
 
             <a href="create_event.php" class="btn">
                 Create Event
@@ -106,9 +155,7 @@
 
             <h3>Manage Events</h3>
 
-            <p>
-                Edit or delete existing events.
-            </p>
+            <p>Edit or delete existing events.</p>
 
             <a href="events.php" class="btn">
                 Manage Events
@@ -124,9 +171,7 @@
 
             <h3>View Registrations</h3>
 
-            <p>
-                View all student registrations.
-            </p>
+            <p>View all student registrations.</p>
 
             <a href="registrations.php" class="btn">
                 View Registrations
@@ -142,9 +187,7 @@
 
             <h3>Student Events</h3>
 
-            <p>
-                Open the student event registration page.
-            </p>
+            <p>Open the student event registration page.</p>
 
             <a href="../student_events.php" class="btn">
                 Student Events
@@ -160,9 +203,7 @@
 
             <h3>My Registrations</h3>
 
-            <p>
-                View your personal registrations.
-            </p>
+            <p>View your personal registrations.</p>
 
             <a href="../my_registrations.php" class="btn">
                 My Registrations
@@ -178,9 +219,7 @@
 
             <h3>Logout</h3>
 
-            <p>
-                Securely sign out of your administrator account.
-            </p>
+            <p>Securely sign out of your administrator account.</p>
 
             <a href="../logout.php" class="btn btn-danger">
                 Logout
@@ -193,3 +232,5 @@
 </div>
 
 </body>
+
+</html>
