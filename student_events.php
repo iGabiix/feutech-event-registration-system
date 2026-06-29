@@ -13,106 +13,100 @@ $result = mysqli_query($conn,$sql);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Available Events</title>
 
 <link rel="stylesheet" href="assets/css/style.css">
 
-<style>
-
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:20px;
-}
-
-table,th,td{
-border:1px solid #ccc;
-}
-
-th,td{
-padding:10px;
-text-align:center;
-}
-
-th{
-background:green;
-color:white;
-}
-
-.register-btn{
-background:green;
-color:white;
-padding:8px 15px;
-border-radius:5px;
-text-decoration:none;
-}
-
-</style>
-
 </head>
 
 <body>
 
-<div class="container" style="width:1000px;">
+<div class="container">
 
-<h2>Available Events</h2>
+    <h1 class="auth-title">
+        FEU Event Registration System
+    </h1>
 
-<table>
+    <h2 class="auth-subtitle">
+        Available Events
+    </h2>
 
-<tr>
+    <table>
 
-<th>Event</th>
-<th>Description</th>
-<th>Date</th>
-<th>Location</th>
-<th>Action</th>
+        <thead>
 
-</tr>
+            <tr>
 
-<?php while($row=mysqli_fetch_assoc($result)){ ?>
+                <th>Event</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Action</th>
 
-<tr>
+            </tr>
 
-<td><?php echo $row['event_name']; ?></td>
+        </thead>
 
-<td><?php echo $row['description']; ?></td>
+        <tbody>
 
-<td><?php echo $row['event_date']; ?></td>
+        <?php while($row = mysqli_fetch_assoc($result)){ ?>
 
-<td><?php echo $row['location']; ?></td>
+            <tr>
 
-<td>
+                <td><?php echo $row['event_name']; ?></td>
 
-<a
-class="register-btn"
-href="register_event.php?id=<?php echo $row['event_id']; ?>">
-Register
-</a>
+                <td><?php echo $row['description']; ?></td>
 
-</td>
+                <td><?php echo $row['event_date']; ?></td>
 
-</tr>
+                <td><?php echo $row['location']; ?></td>
 
-<?php } ?>
+                <td>
 
-</table>
+                    <a
+                    href="register_event.php?id=<?php echo $row['event_id']; ?>"
+                    class="btn btn-sm">
 
-<br>
+                        Register
 
-<a href="my_registrations.php">
-My Registrations
-</a>
+                    </a>
 
-<br><br>
+                </td>
 
-<a href="admin/dashboard.php">
-← Back to Dashboard
+            </tr>
 
-</a>
+        <?php } ?>
+
+        </tbody>
+
+    </table>
+
+    <br>
+
+    <a
+    href="my_registrations.php"
+    class="btn">
+
+        My Registrations
+
+    </a>
+
+    <br><br>
+
+    <a
+    href="student_dashboard.php"
+    class="btn">
+
+        ← Back to Dashboard
+
+    </a>
 
 </div>
 
