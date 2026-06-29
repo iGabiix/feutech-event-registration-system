@@ -43,6 +43,9 @@ $totalEvents = mysqli_fetch_assoc($result)['total'];
 
 <link rel="stylesheet" href="assets/css/style.css">
 
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 </head>
 
 <body>
@@ -54,63 +57,172 @@ $totalEvents = mysqli_fetch_assoc($result)['total'];
     </h1>
 
     <h2 class="auth-subtitle">
-        Student Dashboard
+        Student Portal
     </h2>
 
-    <div class="success">
+    <div class="welcome-card">
 
-        <strong>Welcome, <?php echo $_SESSION['fullname']; ?>!</strong>
+        <div class="welcome-icon">
 
-        <br>
+            <i class="fa-solid fa-user-graduate"></i>
 
-        Role:
-        <strong><?php echo ucfirst($_SESSION['role']); ?></strong>
+        </div>
+
+        <div>
+
+            <h2>
+
+                Welcome Back,
+                <?php echo $_SESSION['fullname']; ?>
+
+            </h2>
+
+            <p>
+
+                Logged in as
+                <strong>
+                    <?php echo ucfirst($_SESSION['role']); ?>
+                </strong>
+
+            </p>
+
+        </div>
 
     </div>
+
+    <h2 class="section-title">
+
+        Dashboard Overview
+
+    </h2>
 
     <div class="cards">
 
         <div class="card">
 
-            <h1><?php echo $totalEvents; ?></h1>
+            <i class="fa-solid fa-calendar-days dashboard-icon"></i>
 
-            <p>Available Events</p>
+            <h1>
+
+                <?php echo $totalEvents; ?>
+
+            </h1>
+
+            <p>
+
+                Available Events
+
+            </p>
 
         </div>
 
         <div class="card">
 
-            <h1><?php echo $totalRegistered; ?></h1>
+            <i class="fa-solid fa-clipboard-list dashboard-icon"></i>
 
-            <p>My Registrations</p>
+            <h1>
+
+                <?php echo $totalRegistered; ?>
+
+            </h1>
+
+            <p>
+
+                My Registrations
+
+            </p>
 
         </div>
 
     </div>
 
-    <a href="student_events.php" class="btn">
+    <h2 class="section-title">
 
-        Browse Events
+        Quick Actions
 
-    </a>
+    </h2>
 
-    <br><br>
+    <div class="action-grid">
 
-    <a href="my_registrations.php" class="btn">
+        <div class="action-card">
 
-        My Registrations
+            <i class="fa-solid fa-calendar-check action-icon"></i>
 
-    </a>
+            <h3>
 
-    <br><br>
+                Browse Events
 
-    <a href="logout.php" class="btn"
+            </h3>
 
-       style="background:#dc3545;">
+            <p>
 
-        Logout
+                View all available FEU events and register instantly.
 
-    </a>
+            </p>
+
+            <a
+            href="student_events.php"
+            class="btn">
+
+                Browse Events
+
+            </a>
+
+        </div>
+
+        <div class="action-card">
+
+            <i class="fa-solid fa-file-signature action-icon"></i>
+
+            <h3>
+
+                My Registrations
+
+            </h3>
+
+            <p>
+
+                View your registered events or cancel registrations.
+
+            </p>
+
+            <a
+            href="my_registrations.php"
+            class="btn">
+
+                View Registrations
+
+            </a>
+
+        </div>
+
+        <div class="action-card">
+
+            <i class="fa-solid fa-right-from-bracket action-icon logout-icon"></i>
+
+            <h3>
+
+                Logout
+
+            </h3>
+
+            <p>
+
+                Securely sign out of your account.
+
+            </p>
+
+            <a
+            href="logout.php"
+            class="btn btn-danger">
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </div>
 
 </div>
 
