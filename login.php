@@ -16,14 +16,15 @@ if(isset($_POST['login'])){
 
         $user = mysqli_fetch_assoc($result);
 
-        // Plain text password (current setup)
+        // Current project uses plain text passwords.
+        // Later we'll replace this with password_verify().
+
         if($password == $user['password']){
 
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['fullname'] = $user['fullname'];
             $_SESSION['role'] = $user['role'];
 
-            // Redirect based on role
             if($user['role'] == "admin"){
                 header("Location: admin/dashboard.php");
             }else{
@@ -33,74 +34,115 @@ if(isset($_POST['login'])){
             exit();
 
         }else{
-            $message = "Incorrect password!";
+
+            $message = "Incorrect password.";
+
         }
 
     }else{
-        $message = "Email not found!";
+
+        $message = "Email not found.";
+
     }
+
 }
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-    <title>FEU Event Registration System</title>
+<meta charset="UTF-8">
 
-    <link rel="stylesheet" href="assets/css/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login | FEU Event Registration System</title>
+
+<link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 
 <body>
 
-<div class="container">
+<div class="container auth-box">
 
-    <h1>FEU Event Registration System</h1>
+<h1 class="auth-title">
+FEU Event Registration System
+</h1>
 
-    <h2>Login</h2>
+<h2 class="auth-subtitle">
+Welcome Back
+</h2>
 
-    <?php if($message != ""){ ?>
-        <p style="color:red; font-weight:bold;">
-            <?php echo $message; ?>
-        </p>
-    <?php } ?>
+<?php if($message != ""){ ?>
 
-    <form method="POST">
+<div
+style="
+background:#ffe5e5;
+color:#b00020;
+padding:12px;
+border-radius:8px;
+margin-bottom:20px;
+text-align:center;
+font-weight:bold;
+">
 
-        <label>Email</label>
+<?php echo $message; ?>
 
-        <input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-        >
+</div>
 
-        <label>Password</label>
+<?php } ?>
 
-        <input
-            type="password"
-            name="password"
-            placeholder="Enter your password"
-            required
-        >
+<form method="POST">
 
-        <button
-            type="submit"
-            name="login">
-            Login
-        </button>
+<label>Email Address</label>
 
-    </form>
+<input
+type="email"
+name="email"
+placeholder="Enter your email address"
+required
+autocomplete="email"
+>
 
-    <br>
+<label>Password</label>
 
-    <p>
-        Don't have an account?
-        <a href="register.php">Register Here</a>
-    </p>
+<input
+type="password"
+name="password"
+placeholder="Enter your password"
+required
+autocomplete="current-password"
+>
+
+<button
+type="submit"
+name="login">
+
+Login
+
+</button>
+
+</form>
+
+<div class="auth-footer">
+
+<p>
+
+Don't have an account?
+
+</p>
+
+<br>
+
+<a class="btn" href="register.php">
+
+Create Account
+
+</a>
+
+</div>
 
 </div>
 
