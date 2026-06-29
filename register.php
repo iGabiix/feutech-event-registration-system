@@ -10,15 +10,15 @@ $messageType = "";
 
 if(isset($_POST['register'])){
 
-    $fullname = trim(mysqli_real_escape_string($conn, $_POST['fullname']));
-    $email = trim(mysqli_real_escape_string($conn, $_POST['email']));
+    $fullname = trim(mysqli_real_escape_string($conn,$_POST['fullname']));
+    $email = trim(mysqli_real_escape_string($conn,$_POST['email']));
     $password = trim($_POST['password']);
     $confirm_password = trim($_POST['confirm_password']);
 
-    // Check if email already exists
-    $check = mysqli_query($conn,"SELECT * FROM users WHERE email='$email'");
+    $check = mysqli_query($conn,
+    "SELECT * FROM users WHERE email='$email'");
 
-    if(mysqli_num_rows($check) > 0){
+    if(mysqli_num_rows($check)>0){
 
         $message = "Email already exists.";
         $messageType = "error";
@@ -29,10 +29,11 @@ if(isset($_POST['register'])){
         $message = "Passwords do not match.";
         $messageType = "error";
 
-    }else{
+    }
+    else{
 
         // Plain text password for now
-        // Later we will change this to password_hash()
+        // Later we will upgrade to password_hash()
 
         $sql = "INSERT INTO users(fullname,email,password)
                 VALUES('$fullname','$email','$password')";
@@ -56,6 +57,7 @@ if(isset($_POST['register'])){
 ?>
 
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -74,7 +76,9 @@ href="assets/css/style.css">
 
 <body>
 
-<div class="container auth-box">
+<div class="container">
+
+<div class="auth-box">
 
 <h1 class="auth-title">
 
@@ -88,30 +92,23 @@ Create Account
 
 </h2>
 
-<?php if($message!=""){ ?>
-
-<div
-style="
-padding:12px;
-margin-bottom:20px;
-border-radius:8px;
-text-align:center;
-font-weight:bold;
-
 <?php
-if($messageType=="success"){
-echo "background:#d4edda;color:#155724;";
-}else{
-echo "background:#ffe5e5;color:#b00020;";
+
+if($message!=""){
+
+    if($messageType=="success"){
+
+        echo "<div class='success'>$message</div>";
+
+    }else{
+
+        echo "<div class='error'>$message</div>";
+
+    }
+
 }
+
 ?>
-">
-
-<?php echo $message; ?>
-
-</div>
-
-<?php } ?>
 
 <form method="POST">
 
@@ -165,14 +162,14 @@ Already have an account?
 
 </p>
 
-<br>
-
 <a class="btn"
 href="login.php">
 
 Login Here
 
 </a>
+
+</div>
 
 </div>
 
