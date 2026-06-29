@@ -1,6 +1,7 @@
-/* =====================================
+/* ==========================================
    FEU EVENT REGISTRATION SYSTEM
-===================================== */
+   Global Stylesheet
+========================================== */
 
 *{
     margin:0;
@@ -14,103 +15,99 @@ body{
     color:#333;
 }
 
-/* ---------- MAIN CONTAINER ---------- */
+/* =============================
+   CONTAINERS
+============================= */
 
 .container{
-
     width:90%;
     max-width:1100px;
-
     margin:50px auto;
-
     background:#fff;
-
     padding:40px;
-
     border-radius:18px;
-
     box-shadow:0 10px 25px rgba(0,0,0,.08);
-
 }
-
-/* ---------- LOGIN / REGISTER ---------- */
 
 .auth-box{
-
-    width:100%;
-    max-width:500px;
-
+    max-width:650px;
     margin:auto;
-
 }
 
+/* =============================
+   TITLES
+============================= */
+
 .auth-title{
-
-    text-align:center;
-
-    color:#006B3F;
-
-    font-size:34px;
-
-    margin-bottom:10px;
-
+    color:#014421;
+    font-size:52px;
+    font-weight:bold;
+    line-height:1.15;
+    margin-bottom:35px;
 }
 
 .auth-subtitle{
-
     text-align:center;
-
-    color:#555;
-
-    font-size:22px;
-
-    margin-bottom:30px;
-
+    color:#006B3F;
+    font-size:34px;
+    margin-bottom:35px;
 }
 
-/* ---------- LABELS ---------- */
+/* =============================
+   FORM
+============================= */
+
+form{
+    width:100%;
+}
 
 label{
-
     display:block;
-
-    margin-top:18px;
-
-    margin-bottom:8px;
-
-    font-weight:bold;
-
+    margin:18px 0 8px;
     color:#014421;
-
+    font-size:19px;
+    font-weight:bold;
 }
 
-/* ---------- INPUTS ---------- */
+/* ONLY style form controls */
 
-input,
-textarea,
-select{
+form input,
+form textarea,
+form select{
 
     display:block;
 
     width:100%;
 
+    max-width:100%;
+
+    height:52px;
+
     padding:12px 15px;
-
-    border:1px solid #ccc;
-
-    border-radius:8px;
 
     font-size:16px;
 
-    background:white;
+    border:1px solid #cfcfcf;
+
+    border-radius:8px;
+
+    background:#fff;
 
     transition:.25s;
 
 }
 
-input:focus,
-textarea:focus,
-select:focus{
+textarea{
+
+    min-height:130px;
+
+    resize:vertical;
+
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus{
 
     outline:none;
 
@@ -120,15 +117,20 @@ select:focus{
 
 }
 
-/* ---------- BUTTON ---------- */
+/* =============================
+   BUTTONS
+============================= */
 
-button{
+button,
+.btn{
+
+    display:inline-block;
 
     width:100%;
 
-    padding:14px;
-
     margin-top:25px;
+
+    padding:14px;
 
     border:none;
 
@@ -144,23 +146,42 @@ button{
 
     cursor:pointer;
 
+    text-decoration:none;
+
     transition:.25s;
+
+    text-align:center;
 
 }
 
-button:hover{
+button:hover,
+.btn:hover{
 
     background:#014421;
 
 }
 
-/* ---------- LINKS ---------- */
+/* Small buttons */
+
+.btn-sm{
+
+    width:auto;
+
+    padding:10px 20px;
+
+    margin-top:0;
+
+}
+
+/* =============================
+   LINKS
+============================= */
 
 a{
 
-    text-decoration:none;
-
     color:#006B3F;
+
+    text-decoration:none;
 
     font-weight:bold;
 
@@ -172,33 +193,9 @@ a:hover{
 
 }
 
-/* ---------- BUTTON LINKS ---------- */
-
-.btn{
-
-    display:inline-block;
-
-    background:#006B3F;
-
-    color:white;
-
-    padding:12px 24px;
-
-    border-radius:8px;
-
-    margin-top:10px;
-
-}
-
-.btn:hover{
-
-    background:#014421;
-
-    color:white;
-
-}
-
-/* ---------- TABLE ---------- */
+/* =============================
+   TABLES
+============================= */
 
 table{
 
@@ -222,7 +219,7 @@ th{
 
     background:#006B3F;
 
-    color:white;
+    color:#fff;
 
 }
 
@@ -235,7 +232,9 @@ td{
 
 }
 
-/* ---------- DASHBOARD CARDS ---------- */
+/* =============================
+   DASHBOARD CARDS
+============================= */
 
 .cards{
 
@@ -243,9 +242,9 @@ td{
 
     gap:20px;
 
-    flex-wrap:wrap;
-
     margin:30px 0;
+
+    flex-wrap:wrap;
 
 }
 
@@ -257,11 +256,11 @@ td{
 
     background:#006B3F;
 
-    color:white;
-
-    padding:30px;
+    color:#fff;
 
     border-radius:12px;
+
+    padding:30px;
 
     text-align:center;
 
@@ -269,7 +268,7 @@ td{
 
 .card h1{
 
-    font-size:42px;
+    font-size:44px;
 
     margin-bottom:10px;
 
@@ -281,23 +280,9 @@ td{
 
 }
 
-/* ---------- LOGIN FOOTER ---------- */
-
-.auth-footer{
-
-    text-align:center;
-
-    margin-top:25px;
-
-}
-
-.auth-footer p{
-
-    margin-bottom:12px;
-
-}
-
-/* ---------- ALERTS ---------- */
+/* =============================
+   ALERTS
+============================= */
 
 .success{
 
@@ -305,7 +290,7 @@ td{
 
     color:#155724;
 
-    padding:12px;
+    padding:14px;
 
     border-radius:8px;
 
@@ -319,7 +304,7 @@ td{
 
     color:#b00020;
 
-    padding:12px;
+    padding:14px;
 
     border-radius:8px;
 
@@ -327,7 +312,29 @@ td{
 
 }
 
-/* ---------- MOBILE ---------- */
+/* =============================
+   LOGIN / REGISTER FOOTER
+============================= */
+
+.auth-footer{
+
+    text-align:center;
+
+    margin-top:30px;
+
+}
+
+.auth-footer p{
+
+    margin-bottom:15px;
+
+    font-size:18px;
+
+}
+
+/* =============================
+   RESPONSIVE
+============================= */
 
 @media(max-width:768px){
 
@@ -341,13 +348,13 @@ td{
 
 .auth-title{
 
-    font-size:28px;
+    font-size:38px;
 
 }
 
 .auth-subtitle{
 
-    font-size:18px;
+    font-size:28px;
 
 }
 
