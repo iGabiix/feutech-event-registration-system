@@ -150,6 +150,7 @@ Student Event Registration
 <li>
 <a href="../my_registrations.php">
 My Registrations
+
 </a>
 </li>
 
