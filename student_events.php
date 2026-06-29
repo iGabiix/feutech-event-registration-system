@@ -103,6 +103,12 @@ Register
 
 <br>
 
+<a href="my_registrations.php">
+My Registrations
+</a>
+
+<br><br>
+
 <a href="admin/dashboard.php">
 ← Back to Dashboard
 </a>

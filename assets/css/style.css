@@ -1,51 +1,272 @@
+/* ==========================
+   FEU EVENT REGISTRATION SYSTEM
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
 body{
-    font-family: Arial, sans-serif;
-    background:#f4f4f4;
+
+    background:#F8FAFC;
+
 }
 
 .container{
-    width:400px;
-    margin:50px auto;
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,.1);
+
+    width:1200px;
+    margin:40px auto;
+
+    background:#fff;
+
+    padding:40px;
+
+    border-radius:15px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+
 }
 
-h2{
+h1,h2,h3{
+
+    color:#014421;
+    margin-bottom:20px;
+
+}
+
+hr{
+
+    margin:30px 0;
+
+    border:none;
+
+    border-top:2px solid #ddd;
+
+}
+
+/* ==========================
+BUTTONS
+========================== */
+
+.btn{
+
+    display:inline-block;
+
+    padding:12px 22px;
+
+    border-radius:6px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    opacity:.9;
+    transform:translateY(-2px);
+
+}
+
+.btn-green{
+
+    background:#006B3F;
+
+}
+
+.btn-blue{
+
+    background:#0d6efd;
+
+}
+
+.btn-red{
+
+    background:#dc3545;
+
+}
+
+.btn-gold{
+
+    background:#F4C430;
+    color:#000;
+
+}
+
+/* ==========================
+CARDS
+========================== */
+
+.cards{
+
+    display:flex;
+
+    gap:25px;
+
+    margin:35px 0;
+
+}
+
+.card{
+
+    flex:1;
+
+    background:#006B3F;
+
+    color:white;
+
+    border-radius:12px;
+
     text-align:center;
+
+    padding:35px;
+
+    transition:.3s;
+
+    cursor:pointer;
+
 }
 
-label{
-    display:block;
-    margin-top:10px;
+.card:hover{
+
+    background:#014421;
+
+    transform:translateY(-5px);
+
 }
 
-input{
+.card h1{
+
+    color:white;
+
+    font-size:50px;
+
+}
+
+.card p{
+
+    font-size:20px;
+
+    margin-top:15px;
+
+}
+
+/* ==========================
+TABLE
+========================== */
+
+table{
+
     width:100%;
-    padding:10px;
-    margin-top:5px;
-    box-sizing:border-box;
+
+    border-collapse:collapse;
+
+    margin-top:25px;
+
+}
+
+table,th,td{
+
+    border:1px solid #ddd;
+
+}
+
+th{
+
+    background:#006B3F;
+
+    color:white;
+
+}
+
+th,td{
+
+    padding:14px;
+
+    text-align:center;
+
+}
+
+tr:nth-child(even){
+
+    background:#f4f4f4;
+
+}
+
+tr:hover{
+
+    background:#f1fdf7;
+
+}
+
+/* ==========================
+FORM
+========================== */
+
+input,
+textarea,
+select{
+
+    width:100%;
+
+    padding:12px;
+
+    margin:10px 0 20px;
+
+    border:1px solid #ccc;
+
+    border-radius:6px;
+
 }
 
 button{
+
     width:100%;
-    padding:10px;
-    margin-top:15px;
-    background:green;
+
+    padding:14px;
+
+    background:#006B3F;
+
     color:white;
+
     border:none;
+
+    border-radius:6px;
+
     cursor:pointer;
+
+    font-size:16px;
+
 }
 
-/* Add this below */
+button:hover{
 
-textarea{
-    width:100%;
-    padding:10px;
-    margin-top:5px;
-    margin-bottom:15px;
-    font-family:Arial, sans-serif;
-    resize:vertical;
-    box-sizing:border-box;
+    background:#014421;
+
+}
+
+/* ==========================
+LINKS
+========================== */
+
+a{
+
+    color:#006B3F;
+
+    text-decoration:none;
+
+}
+
+a:hover{
+
+    color:#F4C430;
+
 }
